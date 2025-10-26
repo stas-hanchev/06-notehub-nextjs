@@ -38,6 +38,13 @@ export async function fetchNotes(keyWord: string, page: number, perPage: number)
     return response.data;
 }
 
+export async function fetchNoteById(id: string): Promise<Note> {
+    const response = await api.get<Note>(`/notes/${id}`);
+    console.log('fetchNotesById', response.data);
+
+    return response.data;
+}
+
 export async function createNote(payload: NewNote): Promise<Note> {
     const response = await api.post<Note>(`/notes`, payload)
     console.log('createNote', response.data);
